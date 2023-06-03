@@ -20,9 +20,9 @@ export default function handler(request: NextRequest) {
         <div
           style={{
             backgroundColor: "black",
-            backgroundSize: "150px 150px",
-            height: "100%",
-            width: "100%",
+            // backgroundSize: "150px 150px",
+            height: "1080px",
+            width: "1920px",
             display: "flex",
             textAlign: "center",
             alignItems: "center",
