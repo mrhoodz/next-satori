@@ -62,11 +62,11 @@ export default function handler(request: NextRequest) {
             {title}
           </div>
         </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-      }
+        // {
+        //   width: 1200,
+        //   height: 630,
+        // }
+      )
     );
   } catch (e: any) {
     console.log(`${e.message}`);
