@@ -14,13 +14,14 @@ export default function handler(request: NextRequest) {
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "My default title";
+    console.log("l was called");
 
     return new ImageResponse(
       (
         <div
           style={{
             backgroundColor: "black",
-            // backgroundSize: "150px 150px",
+            backgroundSize: "150px 150px",
             height: "1080px",
             width: "1920px",
             display: "flex",
