@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 
@@ -22,8 +23,9 @@ export default function handler(request: NextRequest) {
           style={{
             backgroundColor: "black",
             backgroundSize: "150px 150px",
-            height: "1080px",
-            width: "1920px",
+            position: "relative",
+            height: "100%",
+            width: "100%",
             display: "flex",
             textAlign: "center",
             alignItems: "center",
@@ -50,7 +52,7 @@ export default function handler(request: NextRequest) {
           </div>
           <div
             style={{
-              fontSize: 60,
+              fontSize: "60px",
               fontStyle: "normal",
               letterSpacing: "-0.025em",
               color: "white",
@@ -65,8 +67,8 @@ export default function handler(request: NextRequest) {
         </div>
       ),
       {
-        width: 1200,
-        height: 630,
+        width: 883,
+        height: 441,
       }
     );
   } catch (e: any) {
