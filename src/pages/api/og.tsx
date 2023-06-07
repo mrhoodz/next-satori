@@ -54,15 +54,19 @@ export default async function handler(request: NextRequest) {
           }}
         >
           <img
+            height={444}
+            width={888}
             style={{ position: "absolute", height: "100%", width: "102%" }}
             src={imageSrc}
             alt="sadsadas"
           />
           <img
+            height={208}
+            width={206}
             style={{
               position: "absolute",
-              height: "208.77px",
-              width: "206.38px ",
+              // height: "208.77px",
+              // width: "206.38px ",
               left: "84.2px",
               top: "131px",
             }}
