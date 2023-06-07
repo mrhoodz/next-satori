@@ -10,6 +10,9 @@ export const config = {
 const image: any = fetch(
   new URL("../../assets/background.jpg", import.meta.url)
 ).then((res) => res.arrayBuffer());
+const imageLogo: any = fetch(
+  new URL("../../assets/qwikLogo.jpg", import.meta.url)
+).then((res) => res.arrayBuffer());
 
 const font = fetch(
   new URL("../../assets/Poppins-SemiBold.ttf", import.meta.url)
@@ -24,6 +27,7 @@ export default async function handler(request: NextRequest) {
     const { searchParams } = new URL(request.url);
 
     const imageSrc = await image;
+    const imageLogoSrc = await imageLogo;
     const fontData = await font;
     const fontDataBold = await fontBold;
 
@@ -70,7 +74,7 @@ export default async function handler(request: NextRequest) {
               left: "84.2px",
               top: "131px",
             }}
-            src={"http://localhost:3000/qwiklogo.png"}
+            src={imageLogoSrc}
             alt="sadsadas"
           />
 
