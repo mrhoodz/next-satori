@@ -53,12 +53,12 @@ export default async function handler(request: NextRequest) {
             overflow: "hidden",
           }}
         >
-          <img
+          {/* <img
             style={{ position: "absolute", height: "100%", width: "102%" }}
             src={imageSrc}
             alt="sadsadas"
-          />
-          <img
+          /> */}
+          {/* <img
             style={{
               position: "absolute",
               height: "208.77px",
@@ -68,7 +68,7 @@ export default async function handler(request: NextRequest) {
             }}
             src={"http://localhost:3000/qwiklogo.png"}
             alt="sadsadas"
-          />
+          /> */}
 
           {/* <div
             style={{
