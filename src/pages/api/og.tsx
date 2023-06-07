@@ -11,7 +11,7 @@ const image: any = fetch(
   new URL("../../assets/background.jpg", import.meta.url)
 ).then((res) => res.arrayBuffer());
 const imageLogo: any = fetch(
-  new URL("../../assets/qwikLogo.jpg", import.meta.url)
+  new URL("../../assets/qwikLogo.png", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const font = fetch(
