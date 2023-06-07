@@ -1,28 +1,45 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
-
+import { Svg } from "../components/svg";
+import BgImage from "../../assets/1.png";
 export const config = {
   runtime: "edge",
 };
 
-export default function handler(request: NextRequest) {
+const image: any = fetch(
+  new URL("../../assets/background.jpg", import.meta.url)
+).then((res) => res.arrayBuffer());
+
+const font = fetch(
+  new URL("../../assets/Poppins-SemiBold.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
+const fontBold = fetch(
+  new URL("../../assets/Poppins-Bold.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
+
+export default async function handler(request: NextRequest) {
   try {
+    // console.log(x);
     const { searchParams } = new URL(request.url);
+
+    const imageSrc = await image;
+    const fontData = await font;
+    const fontDataBold = await fontBold;
 
     // ?title=<title>
     const hasTitle = searchParams.has("title");
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "My default title";
-    console.log("l was called");
-
+    // console.log("l was called");
+    // console.log(imageSrc);
     return new ImageResponse(
       (
         <div
           style={{
             backgroundColor: "black",
-            backgroundSize: "150px 150px",
+
             position: "relative",
             height: "100%",
             width: "100%",
@@ -32,43 +49,105 @@ export default function handler(request: NextRequest) {
             justifyContent: "center",
             flexDirection: "column",
             flexWrap: "nowrap",
+            color: "pink",
+            overflow: "hidden",
           }}
         >
+          <img
+            style={{ position: "absolute", height: "100%", width: "102%" }}
+            src={imageSrc}
+            alt="sadsadas"
+          />
+          <img
+            style={{
+              position: "absolute",
+              height: "208.77px",
+              width: "206.38px ",
+              left: "84.2px",
+              top: "131px",
+            }}
+            src={"http://localhost:3000/qwiklogo.png"}
+            alt="sadsadas"
+          />
+
+          {/* <div
+            style={{
+              position: "absolute",
+              backgroundColor: "yellow",
+              height: "208.77px",
+              width: "206.38px ",
+              left: "84.2px",
+              top: "131px",
+            }}
+          >
+            s
+          </div> */}
           <div
             style={{
+              position: "absolute",
+              boxShadow: "5px 4px 0px #AC7EF4",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              justifyItems: "center",
+              fontFamily: "Poppins-Medium",
+              color: "black",
+              borderRadius: "8.6px",
+              backgroundColor: "white",
+              // fon,
+              fontSize: "23.73px",
+              fontWeight: "normal",
+              height: "39.88px",
+              // marginTop: "5px",
+              // paddingBlock: "35px",
+              paddingLeft: "35px",
+              paddingRight: "35px",
+              // width: "209.38px ",
+              left: "387.2px",
+              top: "134px",
             }}
           >
-            <img
-              alt="Vercel"
-              height={200}
-              src="data:image/svg+xml,%3Csvg width='116' height='100' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M57.5 0L115 100H0L57.5 0z' /%3E%3C/svg%3E"
-              style={{ margin: "0 30px" }}
-              width={232}
-            />
+            <span style={{ position: "relative", top: "4px" }}>
+              Introducing
+            </span>
           </div>
+          {/* break */}
           <div
             style={{
-              fontSize: "60px",
-              fontStyle: "normal",
-              letterSpacing: "-0.025em",
+              position: "absolute",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "left",
+              fontFamily: "Poppins-Bold",
               color: "white",
-              marginTop: 30,
-              padding: "0 120px",
-              lineHeight: 1.4,
-              whiteSpace: "pre-wrap",
+              fontSize: "34px",
+              // height: "36.88px",
+              width: "399.38px ",
+              left: "387.2px",
+              top: "200.74px",
             }}
           >
-            {title}
+            A web framework to build instantly loading web apps
           </div>
+
+          {/* <Svg /> */}
         </div>
       ),
       {
         width: 883,
         height: 441,
+        fonts: [
+          {
+            name: "Poppins-Medium",
+            data: fontData,
+            style: "normal",
+          },
+          {
+            name: "Poppins-Bold",
+            data: fontDataBold,
+            style: "normal",
+          },
+        ],
       }
     );
   } catch (e: any) {
