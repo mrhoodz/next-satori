@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
-import { Svg } from "../components/svg";
-import BgImage from "../../assets/1.png";
+// import { Svg } from "../components/svg";
+// import BgImage from "../../assets/1.png";
 export const config = {
   runtime: "edge",
 };
