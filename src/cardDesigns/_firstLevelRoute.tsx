@@ -4,6 +4,8 @@ export const FirstLevelRoute = ({ hello, imageSrc, imageLogoSrc }: any) => {
     <div
       style={{
         backgroundColor: "black",
+        // background:
+        //   "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(125,215,88,1) 25%, rgba(193,77,77,1) 69%, rgba(252,70,70,1) 100%",
 
         position: "relative",
         height: "100%",
@@ -20,8 +22,9 @@ export const FirstLevelRoute = ({ hello, imageSrc, imageLogoSrc }: any) => {
         width={888}
         style={{
           position: "absolute",
-          height: "100%",
+          height: "102%",
           width: "102%",
+          filter: "blur(20px)",
         }}
         src={imageSrc}
         alt="sadsadas"
