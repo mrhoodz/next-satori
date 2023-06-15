@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>hello motto asdfsdfds</h1>
-      <img
+      <Image
         // width={208}
         // height={94}
         src="/api/og?title=introducings&subTitle=Iam the subtitle title here"
