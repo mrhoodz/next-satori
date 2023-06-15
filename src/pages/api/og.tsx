@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { designMain } from "@/components/designMain";
+import { DesignMain } from "@/components/designMain";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 // import { Svg } from "../components/svg";
@@ -39,22 +39,31 @@ export default async function handler(request: NextRequest) {
       : "My default title";
     // console.log("l was called");
     // console.log(imageSrc);
-    return new ImageResponse(designMain, {
-      width: 883,
-      height: 441,
-      fonts: [
-        {
-          name: "Poppins-Medium",
-          data: fontData,
-          style: "normal",
-        },
-        {
-          name: "Poppins-Bold",
-          data: fontDataBold,
-          style: "normal",
-        },
-      ],
-    });
+    return new ImageResponse(
+      (
+        <DesignMain
+          hello={"announcing"}
+          imageSrc={imageSrc}
+          imageLogoSrc={imageLogoSrc}
+        />
+      ),
+      {
+        width: 883,
+        height: 441,
+        fonts: [
+          {
+            name: "Poppins-Medium",
+            data: fontData,
+            style: "normal",
+          },
+          {
+            name: "Poppins-Bold",
+            data: fontDataBold,
+            style: "normal",
+          },
+        ],
+      }
+    );
   } catch (e: any) {
     console.log(`${e.message}`);
     return new Response(`Failed to generate the image`, {
