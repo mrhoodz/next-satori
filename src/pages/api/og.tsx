@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { DesignMain } from "@/components/designMain";
+import { FirstLevelRoute } from "@/cardDesigns/_firstLevelRoute";
+import { DesignMain } from "@/cardDesigns/designMain";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 // import { Svg } from "../components/svg";
@@ -9,7 +10,7 @@ export const config = {
 };
 
 const image: any = fetch(
-  new URL("../../assets/background.jpg", import.meta.url)
+  new URL("../../assets/background1.jpg", import.meta.url)
 ).then((res) => res.arrayBuffer());
 const imageLogo: any = fetch(
   new URL("../../assets/qwiklogo.png", import.meta.url)
@@ -24,8 +25,8 @@ const fontBold = fetch(
 
 export default async function handler(request: NextRequest) {
   try {
-    // console.log(x);
     const { searchParams } = new URL(request.url);
+    console.log("fdgfd");
 
     const imageSrc = await image;
     const imageLogoSrc = await imageLogo;
@@ -34,6 +35,7 @@ export default async function handler(request: NextRequest) {
 
     // ?title=<title>
     const hasTitle = searchParams.has("title");
+
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "My default title";
@@ -41,8 +43,8 @@ export default async function handler(request: NextRequest) {
     // console.log(imageSrc);
     return new ImageResponse(
       (
-        <DesignMain
-          hello={"announcing"}
+        <FirstLevelRoute
+          hello={title}
           imageSrc={imageSrc}
           imageLogoSrc={imageLogoSrc}
         />
@@ -62,6 +64,7 @@ export default async function handler(request: NextRequest) {
             style: "normal",
           },
         ],
+        // debug: true,
       }
     );
   } catch (e: any) {

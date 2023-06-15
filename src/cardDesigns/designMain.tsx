@@ -18,13 +18,13 @@ export const DesignMain = ({ hello, imageSrc, imageLogoSrc }: any) => {
         overflow: "hidden",
       }}
     >
-      <img
+      {/* <img
         height={444}
         width={888}
         style={{ position: "absolute", height: "100%", width: "102%" }}
         src={imageSrc}
         alt="sadsadas"
-      />
+      /> */}
       <img
         height={208}
         width={206}

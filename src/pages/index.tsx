@@ -15,7 +15,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>hello motto asdfsdfds</h1>
-      <img src="/api/og" alt="dynamic image goes here" />
+      <img
+        // width={208}
+        // height={94}
+        src="/api/og?title=introducings&subTitle=Iam the subtitle title here"
+        alt="dynamic image goes here"
+      />
       <p>asdasd</p>
     </>
   );
