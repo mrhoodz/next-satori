@@ -26,7 +26,7 @@ const fontBold = fetch(
 export default async function handler(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    console.log("fdgfd");
+    // console.log("fdgfd");
 
     const imageSrc = await image;
     const imageLogoSrc = await imageLogo;
@@ -34,17 +34,25 @@ export default async function handler(request: NextRequest) {
     const fontDataBold = await fontBold;
 
     // ?title=<title>
+    const hasLevel = searchParams.has("level");
     const hasTitle = searchParams.has("title");
+    const hasSubTitle = searchParams.has("subtitle");
 
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
-      : "My default title";
+      : "Tha default title";
+    const subtitle = hasSubTitle
+      ? searchParams.get("subtitle")?.slice(0, 100)
+      : "My default subtitle";
+
+    const level = hasTitle ? searchParams.get("level")?.slice(0, 100) : "0";
     // console.log("l was called");
-    // console.log(imageSrc);
     return new ImageResponse(
       (
         <FirstLevelRoute
-          hello={title}
+          level={level}
+          title={title}
+          subtitle={subtitle}
           imageSrc={imageSrc}
           imageLogoSrc={imageLogoSrc}
         />

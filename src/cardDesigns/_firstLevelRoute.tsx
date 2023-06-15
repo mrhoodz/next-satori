@@ -1,5 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-export const FirstLevelRoute = ({ hello, imageSrc, imageLogoSrc }: any) => {
+export const FirstLevelRoute = ({
+  level,
+  title,
+  subtitle,
+  imageSrc,
+  imageLogoSrc,
+}: any) => {
+  console.log(1);
+  const displaySubtitle = level == "0" ? "none" : "flex";
   return (
     <div
       style={{
@@ -60,14 +68,15 @@ export const FirstLevelRoute = ({ hello, imageSrc, imageLogoSrc }: any) => {
       />
 
       {/* subtitle  */}
-      {/* <span
+      <span
         className="SmTitle-wrapper"
         style={{
           //   backgroundColor: "red",
-          display: "flex",
+          //   display: level == 0 ? "none" : "flex",
           gap: "8.5px",
           justifyContent: "center",
           alignItems: "center",
+          display: displaySubtitle,
         }}
       >
         <span
@@ -98,7 +107,7 @@ export const FirstLevelRoute = ({ hello, imageSrc, imageLogoSrc }: any) => {
             //   top: "200.74px",
           }}
         >
-          {"Deprecated Features for Qwik City"}
+          {subtitle}
         </div>
         <span
           className="dotRight"
@@ -112,7 +121,7 @@ export const FirstLevelRoute = ({ hello, imageSrc, imageLogoSrc }: any) => {
         >
           {" "}
         </span>
-      </span> */}
+      </span>
 
       <span
         style={{
@@ -132,7 +141,7 @@ export const FirstLevelRoute = ({ hello, imageSrc, imageLogoSrc }: any) => {
           //   top: "200.74px",
         }}
       >
-        {"routeLoader$()"}
+        {title}
       </span>
 
       {/* <Svg /> */}
