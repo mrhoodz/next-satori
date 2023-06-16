@@ -39,13 +39,17 @@ export default async function handler(request: NextRequest) {
     const hasSubTitle = searchParams.has("subtitle");
 
     const title = hasTitle
-      ? searchParams.get("title")?.slice(0, 100)
+      ? searchParams.get("title")?.slice(0, 100).replace(/-/g, " ")
       : "Tha default title";
     const subtitle = hasSubTitle
-      ? searchParams.get("subtitle")?.slice(0, 100)
+      ? searchParams
+          .get("subtitle")
+          ?.slice(0, 100)
+          // .replace("#", "")
+          .replace(/-/g, " ")
       : "My default subtitle";
 
-    const level = hasTitle ? searchParams.get("level")?.slice(0, 100) : "0";
+    const level = hasLevel ? searchParams.get("level")?.slice(0, 100) : "0";
     // console.log("l was called");
     return new ImageResponse(
       (
