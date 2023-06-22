@@ -9,13 +9,17 @@ export const config = {
   runtime: "edge",
 };
 
+//load background image
 const image: any = fetch(
   new URL("../../assets/background1.jpg", import.meta.url)
 ).then((res) => res.arrayBuffer());
+
+//load updated logo image
 const imageLogo: any = fetch(
   new URL("../../assets/qwiklogo.png", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
+//load fonts image
 const font = fetch(
   new URL("../../assets/Poppins-SemiBold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
@@ -26,18 +30,18 @@ const fontBold = fetch(
 export default async function handler(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    // console.log("fdgfd");
-
     const imageSrc = await image;
     const imageLogoSrc = await imageLogo;
     const fontData = await font;
     const fontDataBold = await fontBold;
 
-    // ?title=<title>
+    // check query params
     const hasLevel = searchParams.has("level");
     const hasTitle = searchParams.has("title");
     const hasSubTitle = searchParams.has("subtitle");
 
+
+    // process the params
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100).replace(/-/g, " ")
       : "Tha default title";
@@ -49,8 +53,8 @@ export default async function handler(request: NextRequest) {
           .replace(/-/g, " ")
       : "My default subtitle";
 
+      // check level to detemine whether or not to show the subtitle
     const level = hasLevel ? searchParams.get("level")?.slice(0, 100) : "0";
-    // console.log("l was called");
     return new ImageResponse(
       (
         <FirstLevelRoute
