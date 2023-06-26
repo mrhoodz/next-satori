@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { FirstLevelRoute } from "@/cardDesigns/_firstLevelRoute";
 import { DesignMain } from "@/cardDesigns/designMain";
-import { ImageResponse } from "@vercel/og";
-import { NextRequest } from "next/server";
+// import { ImageResponse } from "@vercel/og";
+import { ImageResponse, NextRequest } from "next/server";
 // import { Svg } from "../components/svg";
 // import BgImage from "../../assets/1.png";
 export const config = {
@@ -40,20 +40,19 @@ export default async function handler(request: NextRequest) {
     const hasTitle = searchParams.has("title");
     const hasSubTitle = searchParams.has("subtitle");
 
-
     // process the params
     const title = hasTitle
-      ? searchParams.get("title")?.slice(0, 100).replace(/-/g, " ")
+      ? searchParams.get("title")?.slice(0, 100).replace(/[+-]/g, " ")
       : "Tha default title";
     const subtitle = hasSubTitle
       ? searchParams
           .get("subtitle")
           ?.slice(0, 100)
           // .replace("#", "")
-          .replace(/-/g, " ")
+          .replace(/[+-]/g, " ")
       : "My default subtitle";
 
-      // check level to detemine whether or not to show the subtitle
+    // check level to detemine whether or not to show the subtitle
     const level = hasLevel ? searchParams.get("level")?.slice(0, 100) : "0";
     return new ImageResponse(
       (
